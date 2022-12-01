@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SwagProject.Driver;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,17 @@ namespace SwagProject.Pages
 
         public IWebElement Cart => driver.FindElement(By.CssSelector("#shopping_cart_container .shopping_cart_badge"));
 
+        public IWebElement SortByPrice => driver.FindElement(By.ClassName("product_sort_container"));
 
+        public IWebElement MenuClick => driver.FindElement(By.Id("react-burger-menu-btn"));
+
+        public IWebElement AboutClick => driver.FindElement(By.Id("about_sidebar_link"));
+
+        
+        public void SelectOption(string text)
+        {
+            SelectElement element = new SelectElement(SortByPrice);
+            element.SelectByText(text);
+        }
     }
 }
